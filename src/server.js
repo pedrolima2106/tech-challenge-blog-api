@@ -6,12 +6,15 @@ const PORT = process.env.PORT || 3000;
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log('Conexão com o banco OK 🚀');
+    console.log('Conectado ao banco com sucesso 🚀');
+
+    await sequelize.sync(); // 🔥 cria a tabela automaticamente
+    console.log('Modelos sincronizados');
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando na porta ${PORT}`);
     });
   } catch (error) {
-    console.error('Erro ao conectar no banco:', error);
+    console.error('Erro ao iniciar a API:', error);
   }
 })();
