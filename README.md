@@ -15,7 +15,6 @@ Sequelize (ORM)
 
 dotenv
 
-Nodemon
 
 ## Estrutura do Projeto
 
