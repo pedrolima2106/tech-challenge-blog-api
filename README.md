@@ -43,7 +43,7 @@ src/
  npm install
 
 ## Criar arquivo .env
--Na raiz do projeto, crie um arquivo .env com o seguinte conteúdo:
+- Na raiz do projeto, crie um arquivo .env com o seguinte conteúdo:
 
 DB_HOST=localhost
 DB_USER=postgres
@@ -54,7 +54,7 @@ DB_PORT=5432
 PORT=3000
 
 ## Criar o banco de dados
--No PostgreSQL, crie o banco:
+- No PostgreSQL, crie o banco:
 CREATE DATABASE blog_db;
 
 ## Rodar o projeto
@@ -64,11 +64,11 @@ npm run dev
    http://localhost:3000
 
 ## Testes da API
--Thunder Client
+- Thunder Client
 
 ## Rotas da API
 
--Criar um post
+- Criar um post
  POST /posts
 
  {
@@ -79,7 +79,7 @@ npm run dev
 
 ## Listar todos os posts
  
- -GET /posts
+ - GET /posts
 
  ## Buscar posts por título
 
@@ -99,11 +99,11 @@ npm run dev
 
 ## Buscar post por ID
 
--GET /posts/:id
+- GET /posts/:id
 
 ## Atualizar post
 
--PUT /posts/:id
+- PUT /posts/:id
 {
   "title": "Título atualizado",
   "content": "Novo conteúdo"
@@ -111,15 +111,15 @@ npm run dev
 
 ## Deletar post
 
--DELETE /posts/:id
+- DELETE /posts/:id
 
 ## Funcionalidades Implementadas
 
--CRUD completo de posts
--Filtro por título
--Paginação
--Persistência em PostgreSQL
--Arquitetura organizada (MVC + Service)
+- CRUD completo de posts
+- Filtro por título
+- Paginação
+- Persistência em PostgreSQL
+- Arquitetura organizada (MVC + Service)
 
 ## Autor
 Pedro
