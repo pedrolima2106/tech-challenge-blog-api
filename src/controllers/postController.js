@@ -11,20 +11,29 @@ const createPost = async (req, res) => {
 
 async function getAll(req, res) {
   try {
-    const { title } = req.query;
+    const { title, page = 1, limit = 10 } = req.query;
 
     if (title) {
-      const posts = await postService.getPostsByTitle(title);
-      return res.status(200).json(posts);
+      const result = await postService.getPostsByTitle(
+        title,
+        Number(page),
+        Number(limit)
+      );
+      return res.status(200).json(result);
     }
 
-    const posts = await postService.getAllPosts();
-    res.status(200).json(posts);
+    const result = await postService.getAllPosts(
+      Number(page),
+      Number(limit)
+    );
+
+    res.status(200).json(result);
 
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Erro ao buscar posts' });
   }
-};
+}
 
 const getPostById = async (req, res) => {
   const post = await postService.getPostById(req.params.id);

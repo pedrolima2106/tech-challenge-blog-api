@@ -4,11 +4,6 @@ const createPost = async (data) => {
   return await Post.create(data);
 };
 
-const getAllPosts = async () => {
-  return await Post.findAll({
-    order: [['createdAt', 'DESC']]
-  });
-};
 
 const getPostById = async (id) => {
   return await Post.findByPk(id);
@@ -39,20 +34,52 @@ module.exports = {
 
 const { Op } = require('sequelize');
 
-async function getPostsByTitle(title) {
-  return await Post.findAll({
+
+
+async function getAllPosts(page = 1, limit = 10) {
+  const offset = (page - 1) * limit;
+
+  const { count, rows } = await Post.findAndCountAll({
+    order: [['createdAt', 'DESC']],
+    limit,
+    offset
+  });
+
+  return {
+    total: count,
+    page,
+    limit,
+    posts: rows
+  };
+}
+
+async function getPostsByTitle(title, page = 1, limit = 10) {
+  const offset = (page - 1) * limit;
+
+  const { count, rows } = await Post.findAndCountAll({
     where: {
       title: {
         [Op.iLike]: `%${title}%`
       }
     },
-    order: [['createdAt', 'DESC']]
+    order: [['createdAt', 'DESC']],
+    limit,
+    offset
   });
+
+  return {
+    total: count,
+    page,
+    limit,
+    posts: rows
+  };
 }
 
 module.exports = {
   createPost,
   getAllPosts,
-  getPostsByTitle
+  getPostsByTitle,
+  getPostById,
+  updatePost,
+  deletePost
 };
-
