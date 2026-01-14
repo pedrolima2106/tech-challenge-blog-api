@@ -17,7 +17,7 @@ dotenv
 
 Nodemon
 
-## DEstrutura do Projeto
+## Estrutura do Projeto
 
 src/
   config/
