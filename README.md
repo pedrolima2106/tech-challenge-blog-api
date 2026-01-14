@@ -19,19 +19,21 @@ Nodemon
 
 ## Estrutura do Projeto
 
+```text
 src/
-  config/
-    database.js
-  controllers/
-    postController.js
-  models/
-    Post.js
-  routes/
-    postRoutes.js
-  services/
-    postService.js
-  app.js
-  server.js
+├── config/
+│   └── database.js
+├── controllers/
+│   └── postController.js
+├── models/
+│   └── Post.js
+├── routes/
+│   └── postRoutes.js
+├── services/
+│   └── postService.js
+├── app.js
+└── server.js
+```
 
 ## Configuração do Ambiente
 
