@@ -20,7 +20,7 @@ Nodemon
 ## Estrutura do Projeto
 
 src/
- '''config/
+'''config/
   ''' database.js
 ├─ controllers/
 │  └─ postController.js
