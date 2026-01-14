@@ -36,3 +36,23 @@ module.exports = {
   updatePost,
   deletePost
 };
+
+const { Op } = require('sequelize');
+
+async function getPostsByTitle(title) {
+  return await Post.findAll({
+    where: {
+      title: {
+        [Op.iLike]: `%${title}%`
+      }
+    },
+    order: [['createdAt', 'DESC']]
+  });
+}
+
+module.exports = {
+  createPost,
+  getAllPosts,
+  getPostsByTitle
+};
+

@@ -9,9 +9,21 @@ const createPost = async (req, res) => {
   }
 };
 
-const getAllPosts = async (req, res) => {
-  const posts = await postService.getAllPosts();
-  res.json(posts);
+async function getAll(req, res) {
+  try {
+    const { title } = req.query;
+
+    if (title) {
+      const posts = await postService.getPostsByTitle(title);
+      return res.status(200).json(posts);
+    }
+
+    const posts = await postService.getAllPosts();
+    res.status(200).json(posts);
+
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar posts' });
+  }
 };
 
 const getPostById = async (req, res) => {
@@ -40,8 +52,10 @@ const deletePost = async (req, res) => {
 
 module.exports = {
   createPost,
-  getAllPosts,
+  getAll,
   getPostById,
   updatePost,
   deletePost
 };
+
+
